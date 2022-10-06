@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="rtl"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/milky"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/text_normal_x"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/productIdTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_small_x" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/textColorGrey"
+                    android:textSize="@dimen/text_small_x" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/userName"
+                            style="@style/LayoutClickable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_user_blue_small"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"
+                            android:padding="8dp"
+                            android:text="Hello"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/text_small_x" />
+
+                        <ImageView
+                            android:id="@+id/verifyImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/verify_blue"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/city"
+                        style="@style/LayoutClickable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="32dp"
+                        android:drawableStart="@drawable/ic_location_blue_small"
+                        android:drawablePadding="8dp"
+                        android:padding="8dp"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_small_x" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:padding="16dp"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/imagesRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="0"
+                tools:listitem="@layout/item_haraj_image" />
+
+            <TextView
+                android:id="@+id/messageUser"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_message_blue_small"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:text="@string/chat"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_small_x" />
+
+            <TextView
+                android:id="@+id/reviewsView"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/like_green_dark"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:text="@string/s_ratings"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_small_x" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_lighter"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/phoneText"
+                    style="@style/LayoutClickable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_call_blue_small"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
+                    android:text="01111111122"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_normal"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/whatsappText"
+                    style="@style/LayoutClickable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_whatsapp"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
+                    android:text="@string/whatsapp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_normal"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/typeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="سيارة #"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/greyBackDark"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ownerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/editProduct"
+                        style="@style/LayoutClickable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="56dp"
+                        android:padding="8dp"
+                        android:src="@drawable/edit_grey" />
+
+                    <ImageView
+                        android:id="@+id/deleteProduct"
+                        style="@style/LayoutClickable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:src="@drawable/delete" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grayTrans" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/reportImageView"
+                        style="@style/LayoutClickable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="64dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_report_grey" />
+
+                    <CheckBox
+                        android:id="@+id/wishListCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:button="@drawable/ic_wishlist_big_drawable" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grayTrans" />
+
+                <ImageView
+                    android:id="@+id/shareImageView"
+                    style="@style/LayoutClickable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_share_dots" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grayTrans" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/commentsRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_haraj_comment" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grayTrans" />
+
+                <TextView
+                    android:id="@+id/addComment"
+                    style="@style/LayoutClickable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_add_comment"
+                    android:drawablePadding="16dp"
+                    android:padding="8dp"
+                    android:text="@string/add_comment"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_small_x" />
+
+                <TextView
+                    android:id="@+id/turnedOffComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/disabled_comments"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_small_x"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/followComments"
+                style="@style/LayoutClickable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:drawableEnd="@drawable/ic_follow_grey"
+                android:drawablePadding="16dp"
+                android:padding="8dp"
+                android:text="@string/follow_comments"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                android:id="@+id/relatedAds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:padding="8dp"
+                android:text="@string/similar_ads"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/adsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="64dp"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="16"
+                tools:listitem="@layout/item_haraj_small_ad" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/progress_layout" />
+</RelativeLayout>

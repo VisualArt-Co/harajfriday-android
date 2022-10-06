@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grayTrans"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/highestPrice"
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="64dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:minHeight="?actionBarSize"
+                android:padding="8dp"
+                android:text="@string/highest_price_"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_header_x" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addBidLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addBidText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="8dp"
+                    android:hint="@string/bidding_here"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/addBid"
+                style="@style/buttonCardStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="64dp"
+                app:cardBackgroundColor="@color/greenHolo2">
+
+                <TextView
+                    style="@style/buttonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/add_bid"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_normal" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

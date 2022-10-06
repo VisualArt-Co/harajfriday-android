@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:layoutDirection="rtl"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionBarSize"
+        android:background="@color/colorAccent"
+        android:minHeight="@dimen/actionBarSize"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backButton"
+            style="@style/LayoutClickable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/titleText"
+            style="@style/textNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/commissionAccount"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_header_x" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="300dp"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+
+            <TextView
+                android:id="@+id/commissionInfoTextView"
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/calc_commission_val"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/calc_commission"
+                android:textColor="@color/green"
+                android:textSize="@dimen/text_normal_xx" />
+
+
+            <TextView
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/calc_commission_val"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/if_product_sold_with"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/commissionLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:minWidth="200dp"
+                app:hintEnabled="false">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/commissionEditText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_color_solid_accent_outline"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/priceResult"
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/commission_count"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/pay_commission"
+                android:textColor="@color/green"
+                android:textSize="@dimen/text_normal_xx" />
+
+            <TextView
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/can_use_bank_transaction"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                android:id="@+id/bankAccounts"
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textColor="@color/textColorGrey"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:padding="8dp"
+                android:text="@string/after_send_commission"
+                android:textColor="@color/green"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:padding="8dp"
+                android:text="@string/transfer_form"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usernameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:minWidth="200dp"
+                app:hintEnabled="false">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/usernameEditText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_color_solid_accent_outline"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/username"
+                    android:inputType="text"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/commissionValueLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:minWidth="200dp"
+                app:hintEnabled="false">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/commissionValueEditText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_color_solid_accent_outline"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/commission_val"
+                    android:inputType="number"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/bankNoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:minWidth="200dp"
+                app:hintEnabled="false">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/bankNoEditText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_color_solid_accent_outline"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/bankNo"
+                    android:inputType="text"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/senderNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:minWidth="200dp"
+                app:hintEnabled="false">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/senderNameEditText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_color_solid_accent_outline"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/sender_name"
+                    android:inputType="textPersonName"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/phoneLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:minWidth="200dp"
+                app:hintEnabled="false">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneEditText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_color_solid_accent_outline"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/sender_phone"
+                    android:inputType="phone"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/productIdLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:minWidth="200dp"
+                app:hintEnabled="false">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/productIdEditText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_color_solid_accent_outline"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/product_id"
+                    android:inputType="number"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:padding="8dp"
+                android:text="@string/please_delete_product"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/text_normal" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/messageLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:minWidth="200dp"
+                app:hintEnabled="false">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/messageEditText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/white_color_solid_accent_outline"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/notes"
+                    android:inputType="textMultiLine"
+                    android:padding="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/send"
+                style="@style/buttonCardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="300dp">
+
+                <TextView
+                    style="@style/buttonText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/send" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

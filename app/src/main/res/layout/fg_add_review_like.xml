@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        app:liftOnScroll="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actionBarSize"
+            android:background="@color/colorAccent"
+            android:minHeight="@dimen/actionBarSize"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/backButton"
+                style="@style/LayoutClickable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/titleText"
+                style="@style/textNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/add_review"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_header_x" />
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="500dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layoutDirection="rtl"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <CheckBox
+                android:id="@+id/confirmationCheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:padding="4dp"
+                android:text="@string/apply_review_text"
+                android:textAlignment="viewStart" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/question1Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="@string/did_bought"
+                android:textColor="@color/black" />
+
+            <RadioGroup
+                android:id="@+id/question1RadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/blue_outline"
+                android:minWidth="180dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/ok1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/yes"
+                    android:textColor="@color/haraj_selection_color" />
+
+                <RadioButton
+                    android:id="@+id/notOk1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/no"
+                    android:textColor="@color/haraj_selection_color" />
+            </RadioGroup>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/question2Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="@string/did_advice"
+                android:textColor="@color/black" />
+
+            <RadioGroup
+                android:id="@+id/question2RadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/blue_outline"
+                android:minWidth="180dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/ok2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/yes"
+                    android:textColor="@color/haraj_selection_color" />
+
+                <RadioButton
+                    android:id="@+id/notOk2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/no"
+                    android:textColor="@color/haraj_selection_color" />
+            </RadioGroup>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/share_experience"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/messageLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/white_color_solid_accent_outline"
+                app:hintEnabled="false">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/messageEditText"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:drawablePadding="8dp"
+                    android:inputType="textMultiLine"
+                    android:minLines="4"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/send"
+                style="@style/buttonCardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    style="@style/buttonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/send" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

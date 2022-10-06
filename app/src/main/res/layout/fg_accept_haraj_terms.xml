@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:liftOnScroll="false">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actionBarSize"
+            android:elevation="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="@string/haraj_terms"
+            app:titleTextAppearance="@style/CustomToolbarTextAppearance" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layoutDirection="rtl"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/aya"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="@string/term1"
+                android:textColor="@color/black" />
+
+            <RadioGroup
+                android:id="@+id/term1"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/blue_outline"
+                android:minWidth="180dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/ok1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/ok"
+                    android:textColor="@color/haraj_selection_color" />
+
+                <RadioButton
+                    android:id="@+id/notOk1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="@string/notOk"
+                    android:textColor="@color/haraj_selection_color" />
+            </RadioGroup>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="@string/term2"
+                android:textColor="@color/black" />
+
+            <RadioGroup
+                android:id="@+id/term2"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/blue_outline"
+                android:minWidth="180dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/ok2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/ok"
+                    android:textColor="@color/haraj_selection_color" />
+
+                <RadioButton
+                    android:id="@+id/notOk2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="@string/notOk"
+                    android:textColor="@color/haraj_selection_color" />
+            </RadioGroup>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/term3"
+                android:textColor="@color/black" />
+
+            <RadioGroup
+                android:id="@+id/term3"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/blue_outline"
+                android:minWidth="120dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/yes"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/yes"
+                    android:textColor="@color/haraj_selection_color" />
+
+                <RadioButton
+                    android:id="@+id/no"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/toggle_widget_background"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="@string/no"
+                    android:textColor="@color/haraj_selection_color" />
+            </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

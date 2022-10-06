@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benAbdelWahed.ui.deals.details.DealDetailsViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layoutDirection="ltr"
+            app:liftOnScroll="false">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarSize"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/LayoutClickable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/back"
+                    android:onClick="@{viewModel::onBackPressed}"
+                    android:paddingStart="@dimen/_16dp"
+                    android:paddingEnd="@dimen/_16dp"
+                    android:src="@drawable/ic_back" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/special_deals"
+                    android:textAppearance="@style/CustomToolbarTextAppearance" />
+            </FrameLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/imagePager"
+                        imagePagerAdapter="@{viewModel.pagerAdapter}"
+                        indicator="@{indicators}"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+
+                    <com.chahinem.pageindicator.PageIndicator
+                        android:id="@+id/indicators"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:orientation="horizontal"
+                        app:piCentered="true"
+                        app:piDefaultColor="@color/greyBackDarkx"
+                        app:piDotBound="30dp"
+                        app:piDotSpacing="10dp"
+                        app:piSelectedColor="@color/colorPrimary"
+                        app:piSize1="6dp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical|start">
+
+                    <ImageView
+                        style="@style/LayoutClickable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:contentDescription="@string/share_using"
+                        android:onClick="@{viewModel::onShareClicked}"
+                        android:padding="@dimen/_8dp"
+                        android:src="@drawable/ic_share_dots_blue" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/remainsCard"
+                        style="@style/buttonCardStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-4dp"
+                        android:clickable="false"
+                        app:cardBackgroundColor="@{viewModel.isCurrentDealObservable?@color/green:@color/colorAccent,default=@color/green}">
+
+                        <TextView
+                            android:id="@+id/remainsText"
+                            style="@style/buttonText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@{viewModel.isCurrentDealObservable?@string/time_remains_for_deal:@string/deal_ended_at}"
+                            tools:text="@string/time_remains_for_deal" />
+                    </androidx.cardview.widget.CardView>
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/timerText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{viewModel.timerObservable}"
+                    android:textColor="@color/red"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    tools:text="00:00:00" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:text="@{viewModel.daysObservable}"
+                    android:textColor="@color/red"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:text="@string/s_m_h" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/greyBackC8C7CC" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="0dp"
+                        android:text="@{viewModel.deal.title}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/text_normal_x"
+                        android:textStyle="bold"
+                        tools:text="hello world" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@{viewModel.deal.description}"
+                    android:textColor="@color/greyBackDarkx"
+                    android:textSize="@dimen/text_normal" />
+
+                <androidx.cardview.widget.CardView
+                    style="@style/buttonCardStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-4dp"
+                    android:layout_marginBottom="@dimen/_8dp"
+                    android:clickable="false"
+                    app:cardBackgroundColor="@color/greyBackDarkx">
+
+
+                    <TextView
+                        android:id="@+id/mazadType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/deal_details"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_normal" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/description2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@{@string/can_customer_buy_only_s_from_deal(viewModel.maxQuantityForOneCustomerObservable)}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_normal"
+                    tools:text="@string/can_customer_buy_only_s_from_deal" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:visibleOrGone="@{viewModel.isCurrentDealObservable()}"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/greyBackC8C7CC" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_16dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:visibleOrGone="@{viewModel.isCurrentDealObservable()}">
+
+                    <ImageView
+                        style="@style/LayoutClickable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel::onIncreaseClicked}"
+                        android:src="@drawable/ic_add_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxEms="5"
+                        android:minEms="5"
+                        android:text="@{String.valueOf(viewModel.quantityObservable)}"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:text="18" />
+
+                    <ImageView
+                        style="@style/LayoutClickable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel::onDecreaseClicked}"
+                        android:src="@drawable/ic_remove_black" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/subscribe"
+                    style="@style/buttonCardStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:minWidth="80dp"
+                    android:onClick="@{viewModel::onBuyClick}"
+                    android:visibility="visible"
+                    app:visibleOrGone="@{viewModel.isCurrentDealObservable()}">
+
+                    <TextView
+                        android:id="@+id/subscribeText"
+                        style="@style/buttonText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_32dp"
+                        android:paddingEnd="@dimen/_32dp"
+                        android:text="@string/buy_now" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/subscribersLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            style="@style/buttonCardStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="-4dp"
+                            android:layout_marginEnd="-4dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_weight="1"
+                            android:clickable="false"
+                            app:cardBackgroundColor="@color/greyBackDarkx">
+
+                            <TextView
+                                style="@style/buttonText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:text="@string/subscribers" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            style="@style/buttonCardStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:clickable="false"
+                            app:cardBackgroundColor="@color/greyBackDarkx">
+
+
+                            <TextView
+                                android:id="@+id/maxPriceStart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/greyBackDarkx"
+                                android:padding="8dp"
+                                android:text="Mazad values"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_normal" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/addBidUserLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/addBid"
+                            style="@style/buttonCardStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginEnd="0dp"
+                            app:cardBackgroundColor="@color/greenHolo2"
+                            app:cardPreventCornerOverlap="true"
+                            app:cardUseCompatPadding="true">
+
+                            <TextView
+                                style="@style/buttonText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/add_bid"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_normal" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            style="@style/buttonCardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardPreventCornerOverlap="true"
+                            app:cardUseCompatPadding="true">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/addBidLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                app:hintEnabled="false">
+
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/addBidText"
+                                    style="@style/editTextStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@null"
+                                    android:hint="@string/bidding_here"
+                                    android:inputType="number" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/noBidders"
+                        style="@style/buttonText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:text="@string/no_bidders_yet"
+                        android:textColor="@color/black"
+                        android:visibility="gone" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/biddersRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/item_subscribers" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/winnerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:visibility="gone">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layoutDirection="rtl"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="@string/mazad_details_"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/text_normal_x"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/mazadTypeEnded"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="@string/mazad_ended"
+                            android:textColor="@color/greyBackDarkx"
+                            android:textSize="@dimen/text_small_x" />
+
+                        <TextView
+                            android:id="@+id/mazadEndDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".4"
+                            android:gravity="end"
+                            android:padding="8dp"
+                            android:text="@string/mazad_over_after_s"
+                            android:textColor="@color/greyBackDarkxx"
+                            android:textSize="@dimen/text_normal" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/closingPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_x" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/nameWinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:drawableStart="@drawable/ic_user_blue_small"
+                            android:drawablePadding="8dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/text_small_x" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/winner"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_small_x" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

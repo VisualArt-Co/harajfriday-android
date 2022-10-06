@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benAbdelWahed.ui.wallet.add.AddToWalletViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layoutDirection="ltr"
+            app:elevation="0dp"
+            app:liftOnScroll="false">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/MyToolbar"
+                onBackListener="@{viewModel.onBack}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarSize"
+                android:elevation="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetStart="0dp"
+                app:navigationIcon="@drawable/ic_back"
+                app:title="@string/pay_credit_to_wallet"
+                app:titleTextAppearance="@style/CustomToolbarTextAppearance" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/amountConstraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12dp"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginEnd="@dimen/_12dp"
+                    android:background="@color/white"
+                    android:paddingStart="@dimen/_10dp"
+                    android:paddingEnd="@dimen/_10dp"
+                    android:paddingBottom="@dimen/_18dp">
+
+                    <TextView
+                        android:id="@+id/payText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:text="@string/please_add_amount"
+                        android:textColor="@color/textColorGrey"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@id/separator"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/separator"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1dp"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:background="@color/grayTrans2"
+                        app:layout_constraintBottom_toTopOf="@id/editText"
+                        app:layout_constraintTop_toBottomOf="@id/payText" />
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:background="@drawable/grey_round"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxEms="7"
+                        android:padding="@dimen/_8dp"
+                        android:text="@={viewModel.creditObservable}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/separator" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/addAddressConstraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12dp"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginEnd="@dimen/_12dp"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/_18dp">
+
+                    <TextView
+                        android:id="@+id/addressText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginEnd="@dimen/_10dp"
+                        android:text="@string/payment_method"
+                        android:textColor="@color/textColorGrey"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/separator2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1dp"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:background="@color/grayTrans2"
+                        app:layout_constraintTop_toBottomOf="@id/addressText" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler"
+                        adapter="@{viewModel.adapter}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@id/separator2"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/item_payment_method" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/ok"
+                    style="@style/buttonCardStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginBottom="@dimen/_24dp"
+                    android:clickable='@{!viewModel.creditObservable.equals(""),default=true}'
+                    android:focusable='@{!viewModel.creditObservable.equals(""),default=true}'
+                    android:minWidth="80dp"
+                    android:onClick="@{viewModel::onPayClick}"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/paymentConstraint">
+
+                    <TextView
+                        android:id="@+id/subscribeText"
+                        style="@style/buttonText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_32dp"
+                        android:paddingEnd="@dimen/_32dp"
+                        android:text="@string/pay_now" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

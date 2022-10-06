@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benAbdelWahed.ui.deals.DealsViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="ltr"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:elevation="0dp"
+            app:liftOnScroll="false">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/MyToolbar"
+                onBackListener="@{viewModel.onBack}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarSize"
+                android:elevation="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetStart="0dp"
+                app:navigationIcon="@drawable/ic_back"
+                app:title="@string/special_deals"
+                app:titleTextAppearance="@style/CustomToolbarTextAppearance" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                style="@style/mazadTabStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="14dp"
+                android:background="@color/white"
+                android:layoutDirection="rtl"
+                android:minWidth="@dimen/_70sdp"
+                android:minHeight="38dp"
+                app:tabMode="scrollable" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            adapter="@{viewModel.pagerAdapter}"
+            tabLayout="@{tabLayout}"
+            tabTitles="@{viewModel.titles}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="rtl"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

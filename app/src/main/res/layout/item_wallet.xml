@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.benAbdelWahed.utils.StaticMembers" />
+
+        <variable
+            name="viewModel"
+            type="com.benAbdelWahed.ui.wallet.WalletItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/typeText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginBottom="@dimen/_8dp"
+            android:maxLines="2"
+            android:text="@{viewModel.item.description}"
+            android:textColor="@color/greyBack474747"
+            app:layout_constraintBottom_toTopOf="@id/separator"
+            app:layout_constraintEnd_toStartOf="@id/dateText"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="العملية العملية العمملية العملية العمليةالعملية" />
+
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_26dp"
+            android:text="@{StaticMembers.getDateWithoutTimeFromBackend(viewModel.item.created_at)}"
+            android:textColor="@color/greyBack474747"
+            app:layout_constraintBottom_toBottomOf="@id/typeText"
+            app:layout_constraintEnd_toStartOf="@id/endDateText"
+            app:layout_constraintStart_toEndOf="@id/typeText"
+            app:layout_constraintTop_toTopOf="@id/typeText"
+            tools:text="@string/transaction_date" />
+
+        <TextView
+            android:id="@+id/endDateText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{StaticMembers.getDateWithoutTimeFromBackend(viewModel.item.updated_at)}"
+            android:textColor="@color/greyBack474747"
+            app:layout_constraintBottom_toBottomOf="@id/typeText"
+            app:layout_constraintEnd_toStartOf="@id/valueText"
+            app:layout_constraintStart_toEndOf="@id/dateText"
+            app:layout_constraintTop_toTopOf="@id/typeText"
+            tools:text="@string/end_date" />
+
+        <TextView
+            android:id="@+id/valueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14dp"
+            android:text="@{String.valueOf(viewModel.item.amount)}"
+            android:textColor="@{viewModel.item.amount>0?@color/green:@color/red,default=@color/green}"
+            app:layout_constraintBottom_toBottomOf="@id/typeText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/endDateText"
+            app:layout_constraintTop_toTopOf="@id/typeText"
+            tools:text="@string/value_" />
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:background="@color/grayTrans2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/typeText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benAbdelWahed.ui.deals.DealItemViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:onClick="@{viewModel::onClick}"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="@dimen/cardview_corners"
+        app:cardElevation="2dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="180dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/place_holder_logo"
+                    app:errorHolder="@{@drawable/place_holder_logo}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header"
+                    app:placeHolder="@{@drawable/place_holder_logo}"
+                    app:url='@{viewModel.deal.images.size()>0 ? viewModel.deal.images.get(0):""}' />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:alpha=".65"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@{viewModel.isCurrentDeals?@color/colorAccent:@color/black}"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/name"
+                        style="@style/textNormal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="14dp"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLines="1"
+                        android:paddingStart="0dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="4dp"
+                        android:paddingBottom="8dp"
+                        android:text="@{viewModel.deal.title}"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_normal_xx"
+                        app:layout_constraintEnd_toStartOf="@id/price"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="hello world" />
+
+                    <TextView
+                        android:id="@+id/price"
+                        style="@style/textNormal"
+                        param="@{viewModel.deal.price}"
+                        textHtml="@{@string/s_sar}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="14dp"
+                        android:gravity="center"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="0dp"
+                        android:textColor="@color/greenHolo"
+                        app:layout_constraintBottom_toBottomOf="@id/name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/name"
+                        tools:text="hello world" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/description"
+                    style="@style/textNormal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="start|top"
+                    android:maxLines="3"
+                    android:minLines="2"
+                    android:text="@{viewModel.deal.description}"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toStartOf="@id/buyNow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header"
+                    tools:text="سيارة بي ام دبليوسيارة بي ام دبليوسيارة بي ام دبليوسيارة بي ام دبليوسيارة بي ام دبليوسيارة بي ام دبليوسيارة بي ام دبليوسيارة بي ام دبليو" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/buyNow"
+                    style="@style/buttonCardStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:minWidth="80dp"
+                    android:onClick="@{viewModel::buyNow}"
+                    app:cardBackgroundColor="@color/greenHolo2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/description"
+                    app:layout_constraintTop_toTopOf="@id/description"
+                    app:visibleOrGone="@{viewModel.currentDeals}">
+
+                    <TextView
+                        style="@style/buttonText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/buy_now"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_x" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:barrierDirection="start"
+                    app:constraint_referenced_ids="timerText,buyNow" />
+
+                <TextView
+                    android:id="@+id/timerTextEnds"
+                    style="@style/textNormal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="23dp"
+                    android:gravity="start"
+                    android:text="@{viewModel.isCurrentDeals?@string/deal_starts_at:@string/deal_ends_at}"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@id/timerText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/barrier"
+                    app:visibleOrGone="@{viewModel.isCurrentDeals}" />
+
+                <TextView
+                    android:id="@+id/timerText"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:text="@{viewModel.timerObservable}"
+                    android:textColor="@{viewModel.isCurrentDeals?@color/red:@color/redDark,default=@color/red}"
+                    android:textSize="@dimen/text_header"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/buyNow"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@id/remains"
+                    app:visibleOrGone="@{viewModel.isCurrentDeals}"
+                    tools:text="00:00:00" />
+
+                <TextView
+                    android:id="@+id/remains"
+                    style="@style/textNormal"
+                    param="@{viewModel.deal.quantity}"
+                    textHtml="@{@string/remains_amount}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10dp"
+                    android:layout_marginEnd="@dimen/_10dp"
+                    android:layout_marginBottom="@dimen/_10dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/redSmooth"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/timerText"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:visibleOrGone="@{viewModel.isCurrentDeals}"
+                    tools:text="@string/remains_amount"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/timerText2"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:text="@{viewModel.timerObservable}"
+                    android:textColor="@{viewModel.isCurrentDeals?@color/red:@color/redDark,default=@color/red}"
+                    android:textSize="@dimen/text_small_x"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/buyNow"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@id/timerTextEnded"
+                    app:visibleOrGone="@{!viewModel.isCurrentDeals}"
+                    tools:text="00:00:00"
+                    tools:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/timerTextEnded"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10dp"
+                    android:layout_marginEnd="@dimen/_10dp"
+                    android:gravity="start"
+                    android:text="@string/deal_ends_at"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_small"
+                    app:layout_constraintBottom_toBottomOf="@id/timerText2"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/timerText2"
+                    app:visibleOrGone="@{!viewModel.isCurrentDeals}"
+                    tools:visibility="gone" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="false">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actionBarSize"
+            android:elevation="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/cancel"
+                    style="@style/LayoutClickable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_small_x" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/search_filter"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_normal_x" />
+
+                <TextView
+                    android:id="@+id/ok"
+                    style="@style/LayoutClickable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/search"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_small_x" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/categoriesSpinner"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layoutDirection="rtl"
+                android:paddingStart="-15dp"
+                android:paddingEnd="0dp"
+                android:visibility="gone"
+                tools:listitem="@layout/item_list_spinner" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/countrySpinner"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layoutDirection="rtl"
+                android:paddingStart="-15dp"
+                android:paddingEnd="0dp"
+                tools:listitem="@layout/item_list_spinner" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/citySpinner"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layoutDirection="rtl"
+                android:paddingStart="-15dp"
+                android:paddingEnd="0dp"
+                android:visibility="gone"
+                tools:listitem="@layout/item_list_spinner" />
+
+            <TextView
+                android:id="@+id/delete"
+                style="@style/LayoutClickable"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/delete"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_normal_x" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/progress_layout" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

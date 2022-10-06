@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benAbdelWahed.ui.wallet.WalletViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:elevation="0dp"
+            app:liftOnScroll="false">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarSize"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:layoutDirection="ltr"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/LayoutClickable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/back"
+                    android:onClick="@{viewModel::onBackPressed}"
+                    android:paddingStart="@dimen/_16dp"
+                    android:paddingEnd="@dimen/_16dp"
+                    android:src="@drawable/ic_back" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:src="@drawable/logo" />
+            </FrameLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <TextView
+                    android:id="@+id/credit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_28dp"
+                    android:text="@{String.valueOf(viewModel.paymentInformation.usable_balance)}"
+                    android:textColor="@color/greyBack474747"
+                    android:textSize="72sp"
+                    app:layout_constraintEnd_toStartOf="@id/currency"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="5000" />
+
+                <TextView
+                    android:id="@+id/currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:text="@string/r_s"
+                    app:layout_constraintBottom_toBottomOf="@id/credit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/credit" />
+
+                <TextView
+                    android:id="@+id/addCredit"
+                    style="@style/LayoutClickable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30dp"
+                    android:background="@drawable/blue_outline_14"
+                    android:drawableStart="@drawable/ic_add_credit"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:onClick="@{viewModel::onAddBalanceClick}"
+                    android:paddingStart="@dimen/_26dp"
+                    android:paddingTop="@dimen/_8dp"
+                    android:paddingEnd="@dimen/_26dp"
+                    android:paddingBottom="@dimen/_8dp"
+                    android:text="@string/add_credit_to_wallet"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintEnd_toStartOf="@id/addCoupon"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/credit" />
+
+                <TextView
+                    android:id="@+id/addCoupon"
+                    style="@style/LayoutClickable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/blue_outline_14"
+                    android:drawableStart="@drawable/ic_add_coupon"
+                    android:drawablePadding="@dimen/_8dp"
+                    android:onClick="@{viewModel::onAddCouponClick}"
+                    android:paddingStart="@dimen/_26dp"
+                    android:paddingTop="@dimen/_8dp"
+                    android:paddingEnd="@dimen/_26dp"
+                    android:paddingBottom="@dimen/_8dp"
+                    android:text="@string/add_coupon"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/addCredit"
+                    app:layout_constraintTop_toTopOf="@id/addCredit" />
+
+
+                <TextView
+                    android:id="@+id/typeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_14dp"
+                    android:layout_marginTop="@dimen/_32dp"
+                    android:layout_marginBottom="@dimen/_8dp"
+                    android:text="@string/transaction_type"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintBottom_toTopOf="@id/separator"
+                    app:layout_constraintEnd_toStartOf="@id/dateText"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/addCredit" />
+
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_26dp"
+                    android:text="@string/transaction_date"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="@id/typeText"
+                    app:layout_constraintEnd_toStartOf="@id/endDateText"
+                    app:layout_constraintStart_toEndOf="@id/typeText"
+                    app:layout_constraintTop_toTopOf="@id/typeText" />
+
+                <TextView
+                    android:id="@+id/endDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/end_date"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="@id/typeText"
+                    app:layout_constraintEnd_toStartOf="@id/valueText"
+                    app:layout_constraintStart_toEndOf="@id/dateText"
+                    app:layout_constraintTop_toTopOf="@id/typeText" />
+
+                <TextView
+                    android:id="@+id/valueText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_14dp"
+                    android:text="@string/value_"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="@id/typeText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/endDateText"
+                    app:layout_constraintTop_toTopOf="@id/typeText" />
+
+                <View
+                    android:id="@+id/separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:background="@color/grayTrans2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/typeText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            isRefreshing="@{viewModel.refreshObservable}"
+            swipeRefresh="@{viewModel.onRefreshListener}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                adapter="@{viewModel.adapter}"
+                recyclerScroll="@{viewModel.scrollListener}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_wallet" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:gravity="center"
+            android:text="@string/no_history"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal_x"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/separator2"
+            app:visibleOrGone="@{viewModel.noData}"
+            tools:visibility="gone" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

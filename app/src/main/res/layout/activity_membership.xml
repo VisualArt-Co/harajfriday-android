@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benAbdelWahed.ui.membership.MembershipViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layoutDirection="ltr"
+            app:elevation="0dp"
+            app:liftOnScroll="false">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/MyToolbar"
+                onBackListener="@{viewModel.onBack}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarSize"
+                android:elevation="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetStart="0dp"
+                app:navigationIcon="@drawable/ic_back"
+                app:title="@string/premium_subscription"
+                app:titleTextAppearance="@style/CustomToolbarTextAppearance" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_normal_x"
+                    android:textStyle="bold"
+                    app:textHtml="@{viewModel.subscriptionRulesObservable}"
+                    app:visibleOrGone="@{!viewModel.isAMember}" />
+
+                <TextView
+                    android:id="@+id/membershipCardHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_32dp"
+                    android:gravity="center"
+                    android:text="@string/you_sub_in_premium_membership"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_normal_x"
+                    android:textStyle="bold"
+                    app:visibleOrGone="@{viewModel.isAMember()}" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/membershipCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16dp"
+                    android:background="@drawable/blue_outline_12"
+                    android:orientation="vertical"
+                    app:visibleOrGone="@{viewModel.isAMember()}">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_membership_back"
+                        android:contentDescription="@string/premium_subscription" />
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_16dp"
+                        android:contentDescription="@string/premium_subscription"
+                        android:src="@drawable/ic_logo2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_16dp"
+                        android:text="@{viewModel.nameObservable}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_header"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/logo"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/logo"
+                        tools:text="@string/you_sub_in_premium_membership" />
+
+                    <TextView
+                        android:id="@+id/remainsDays"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_24dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_normal"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@id/logo"
+                        app:layout_constraintStart_toStartOf="@id/name"
+                        app:layout_constraintTop_toBottomOf="@id/logo"
+                        app:textHtml="@{@string/remains_days_s(viewModel.daysObservable)}"
+                        app:visibleOrGone="@{viewModel.isActiveMember()}"
+                        tools:text=":عدد الأيام المتبقية" />
+
+                    <TextView
+                        android:id="@+id/subscriptionSuspended"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_24dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_normal"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="@id/logo"
+                        app:layout_constraintStart_toStartOf="@id/name"
+                        app:layout_constraintTop_toBottomOf="@id/logo"
+                        app:visibleOrGone="@{!viewModel.isActiveMember()}"
+                        tools:text=":عدد الأيام المتبقية" />
+
+                    <TextView
+                        android:id="@+id/startDateText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:layout_marginEnd="@dimen/_16dp"
+                        android:text="@string/start_member_date"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_normal"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@id/endDateText"
+                        app:layout_constraintStart_toStartOf="@id/remainsDays"
+                        app:layout_constraintTop_toBottomOf="@id/remainsDays"
+                        app:visibleOrGone="@{viewModel.isActiveMember()}" />
+
+                    <TextView
+                        android:id="@+id/startDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:text="@{viewModel.startDateObservable}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_x"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@id/startDateText"
+                        app:layout_constraintStart_toStartOf="@id/startDateText"
+                        app:layout_constraintTop_toBottomOf="@id/startDateText"
+                        app:visibleOrGone="@{viewModel.isActiveMember()}"
+                        tools:text=":عدد الأيام المتبقية" />
+
+                    <TextView
+                        android:id="@+id/endDateText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/end_member_date"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_normal"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@id/remainsDays"
+                        app:layout_constraintStart_toEndOf="@id/startDateText"
+                        app:layout_constraintTop_toTopOf="@id/startDateText"
+                        app:visibleOrGone="@{viewModel.isActiveMember()}" />
+
+                    <TextView
+                        android:id="@+id/endDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:text="@{viewModel.endDateObservable}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small_x"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@id/endDateText"
+                        app:layout_constraintStart_toStartOf="@id/endDateText"
+                        app:layout_constraintTop_toBottomOf="@id/endDateText"
+                        app:visibleOrGone="@{viewModel.isActiveMember()}"
+                        tools:text=":عدد الأيام المتبقية" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/subscribe"
+            style="@style/LayoutClickable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_30dp"
+            android:background="@drawable/blue_outline_14"
+            android:gravity="center"
+            android:onClick="@{viewModel::onSubscribeClicked}"
+            android:paddingStart="@dimen/_26dp"
+            android:paddingTop="@dimen/_8dp"
+            android:paddingEnd="@dimen/_26dp"
+            android:paddingBottom="@dimen/_8dp"
+            android:text="@string/subscribe_now_to_membership"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toStartOf="@id/addCoupon"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/credit"
+            app:visibleOrGone="@{!viewModel.isAMember}" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

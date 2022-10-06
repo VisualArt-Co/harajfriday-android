@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.benAbdelWahed.activities.HarajDetailsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:liftOnScroll="false">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/MyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actionBarSize"
+            android:elevation="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetStart="0dp"
+            app:navigationIcon="@drawable/ic_back"
+            app:titleTextAppearance="@style/CustomToolbarTextAppearance" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layoutDirection="rtl"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/milky"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical|start"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_header" />
+
+                        <ImageView
+                            android:id="@+id/verifyImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/verify_blue_big"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ratingLayout"
+                        style="@style/Clickable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/likes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:drawableEnd="@drawable/like_green"
+                                android:drawablePadding="4dp"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/greenHolo3"
+                                android:textSize="@dimen/text_small" />
+
+                            <TextView
+                                android:id="@+id/dislikes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/dislike_red"
+                                android:drawablePadding="4dp"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/text_small" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/all_ratings"
+                            android:textSize="@dimen/text_small" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/isConnected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/green_round"
+                    android:maxHeight="40dp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/connected"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_small"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/lastConnected"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/lastConnected_s"
+                    android:textColor="@color/textColorGrey"
+                    android:textSize="@dimen/text_small"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/isInActive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center_vertical|start"
+                    android:text="@string/customer_blocked"
+                    android:textColor="@color/redDark"
+                    android:textSize="@dimen/text_normal_xx"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/messageUser"
+                    style="@style/LayoutClickable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_message_drawable"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
+                    android:text="@string/chat"
+                    android:textColor="@color/haraj_selection_color"
+                    android:textSize="@dimen/text_small" />
+
+                <TextView
+                    android:id="@+id/follow"
+                    style="@style/LayoutClickable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:drawableEnd="@drawable/ic_follow_blue"
+                    android:drawablePadding="16dp"
+                    android:padding="8dp"
+                    android:text="@string/follow"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_small"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_haraj" />
+
+                <TextView
+                    android:id="@+id/errorMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="120dp"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/no_products"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_header_x"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/progress_layout" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

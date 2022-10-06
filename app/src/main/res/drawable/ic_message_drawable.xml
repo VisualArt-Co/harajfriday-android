@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_message_grey_small" android:state_enabled="false" />
+    <item android:drawable="@drawable/ic_message_blue_small" android:state_enabled="true" />
+    <item android:drawable="@drawable/ic_message_blue_small"/>
+</selector>

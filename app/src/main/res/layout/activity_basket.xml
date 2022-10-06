@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benAbdelWahed.ui.basket.BasketViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layoutDirection="ltr"
+            app:elevation="0dp"
+            app:liftOnScroll="false">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/MyToolbar"
+                onBackListener="@{viewModel.onBack}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarSize"
+                android:elevation="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetStart="0dp"
+                app:navigationIcon="@drawable/ic_back"
+                app:title="@string/basket"
+                app:titleTextAppearance="@style/CustomToolbarTextAppearance" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/typeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_14dp"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:layout_marginBottom="@dimen/_8dp"
+                    android:text="@string/total_in_basket"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/countText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(viewModel.itemCount)}"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/typeText"
+                    app:layout_constraintStart_toEndOf="@id/typeText"
+                    app:layout_constraintTop_toTopOf="@id/typeText"
+                    tools:text="1" />
+
+                <TextView
+                    android:id="@+id/totalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/typeText"
+                    app:layout_constraintEnd_toStartOf="@id/totalValueText"
+                    app:layout_constraintTop_toTopOf="@id/typeText" />
+
+                <TextView
+                    android:id="@+id/totalValueText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_14dp"
+                    android:text="@{viewModel.totalPrice}"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/typeText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/totalText"
+                    app:layout_constraintTop_toTopOf="@id/typeText"
+                    tools:text="12" />
+
+                <View
+                    android:id="@+id/separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:background="@color/grayTrans2"
+                    app:layout_constraintTop_toBottomOf="@id/typeText" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12dp"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginEnd="@dimen/_12dp"
+                    app:cardCornerRadius="@dimen/_16dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/separator">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_105dp"
+                            android:scaleType="centerCrop"
+                            app:errorHolder="@{@drawable/place_holder_logo}"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:placeHolder="@{@drawable/place_holder_logo}"
+                            app:url='@{viewModel.currentDeal.images.size()>0 ? viewModel.currentDeal.images.get(0):""}'
+                            tools:scaleType="centerCrop"
+                            tools:src="@drawable/logo" />
+
+
+                        <TextView
+                            android:id="@+id/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp"
+                            android:layout_marginTop="@dimen/_16dp"
+                            android:layout_marginEnd="@dimen/_10dp"
+                            android:text="@{viewModel.currentDeal.title}"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/image"
+                            tools:text="سيارة بي ام دابليو" />
+
+                        <TextView
+                            android:id="@+id/description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_10dp"
+                            android:text="@{viewModel.currentDeal.description}"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/title"
+                            tools:text="بي ام  دبليو سعودي فل كامل  موديل 2012  للبيع بصفقة محددة وبسعر مذهل" />
+
+                        <ImageView
+                            android:id="@+id/delete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_24dp"
+                            android:layout_marginBottom="@dimen/_12dp"
+                            android:onClick="@{viewModel::onBackPressed}"
+                            android:src="@drawable/ic_icon_material_delete_forever"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/description" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/addAddressConstraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12dp"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginEnd="@dimen/_12dp"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/_18dp"
+                    app:layout_constraintTop_toBottomOf="@id/item">
+
+                    <TextView
+                        android:id="@+id/addressText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginEnd="@dimen/_10dp"
+                        android:text="@string/delivery_address"
+                        android:textColor="@color/textColorGrey"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/addAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_4dp"
+                        android:onClick="@{viewModel::onAddAddressClick}"
+                        android:padding="@dimen/_8dp"
+                        android:src="@drawable/ic_icon_material_add"
+                        app:layout_constraintBottom_toBottomOf="@id/addressText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/addressText" />
+
+                    <View
+                        android:id="@+id/separator2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1dp"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:background="@color/grayTrans2"
+                        app:layout_constraintTop_toBottomOf="@id/addressText" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/addressRecycler"
+                        adapter="@{viewModel.addressAdapter}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintTop_toBottomOf="@id/separator2"
+                        app:visibleOrGone="@{!viewModel.noAddress}"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/item_address" />
+
+                    <TextView
+                        android:id="@+id/noAddressText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:layout_marginEnd="@dimen/_10dp"
+                        android:gravity="center"
+                        android:text="@string/no_address"
+                        android:textColor="@color/black"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/separator2"
+                        app:visibleOrGone="@{viewModel.noAddress}"
+                        tools:visibility="gone" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/pricesConstraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12dp"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginEnd="@dimen/_12dp"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/_18dp"
+                    app:layout_constraintTop_toBottomOf="@id/addAddressConstraint">
+
+                    <TextView
+                        android:id="@+id/dealPriceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_14dp"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:layout_marginBottom="@dimen/_8dp"
+                        android:text="@string/deal_price"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/dealPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_16dp"
+                        android:text="@{viewModel.dealPrice}"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@id/dealPriceText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/dealPriceText"
+                        tools:text="1" />
+
+                    <TextView
+                        android:id="@+id/deliveryPriceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_14dp"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:layout_marginBottom="@dimen/_8dp"
+                        android:text="@string/delivery_price"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/dealPrice" />
+
+                    <TextView
+                        android:id="@+id/deliveryPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_16dp"
+                        android:text="@{viewModel.deliveryPrice}"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@id/deliveryPriceText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/deliveryPriceText"
+                        tools:text="1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/paymentConstraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12dp"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginEnd="@dimen/_12dp"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/_18dp"
+                    app:layout_constraintTop_toBottomOf="@id/pricesConstraint">
+
+                    <TextView
+                        android:id="@+id/paymentText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginEnd="@dimen/_10dp"
+                        android:text="@string/payment_method"
+                        android:textColor="@color/textColorGrey"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/addPayment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_4dp"
+                        android:onClick="@{viewModel::onSelectPaymentClick}"
+                        android:padding="@dimen/_8dp"
+                        android:src="@drawable/ic_icon_material_add"
+                        app:layout_constraintBottom_toBottomOf="@id/paymentText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/paymentText" />
+
+                    <View
+                        android:id="@+id/separator3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1dp"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:background="@color/grayTrans2"
+                        app:layout_constraintTop_toBottomOf="@id/paymentText" />
+
+
+                    <TextView
+                        android:id="@+id/noPaymentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:layout_marginEnd="@dimen/_10dp"
+                        android:text="@string/select_payment_method"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/separator3"
+                        app:visibleOrGone="@{viewModel.methodText==0}" />
+
+
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="@dimen/_44dp"
+                        android:layout_height="@dimen/_28dp"
+                        android:layout_marginStart="@dimen/_14dp"
+                        android:layout_marginTop="@dimen/_16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/name"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/separator3"
+                        app:resId="@{viewModel.methodImage}"
+                        app:visibleOrGone="@{viewModel.methodText!=0}"
+                        tools:src="@drawable/ic_icon_metro_visa" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_14dp"
+                        android:layout_marginEnd="@dimen/_14dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_normal"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/icon"
+                        app:layout_constraintTop_toTopOf="@id/icon"
+                        app:textRes="@{viewModel.methodText}"
+                        app:visibleOrGone="@{viewModel.methodText!=0}"
+                        tools:text="فيزا" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/pay"
+                    style="@style/buttonCardStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginBottom="@dimen/_24dp"
+                    android:minWidth="80dp"
+                    android:onClick="@{viewModel::onPayClick}"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/paymentConstraint">
+
+                    <TextView
+                        android:id="@+id/subscribeText"
+                        style="@style/buttonText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_32dp"
+                        android:paddingEnd="@dimen/_32dp"
+                        android:text="@string/pay_now" />
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "973166618297",
+    "firebase_url": "https://souqgomaa.firebaseio.com",
+    "project_id": "souqgomaa",
+    "storage_bucket": "souqgomaa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973166618297:android:1eb965ff506c37bf261d68",
+        "android_client_info": {
+          "package_name": "com.benabdelwahed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973166618297-v85spmlrkm4e42tsdn6pr8fr9h148tqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8KApgdaVdCnTQqNwYvge2hq_95kVWIjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973166618297-v85spmlrkm4e42tsdn6pr8fr9h148tqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

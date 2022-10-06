@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/addProduct"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_add_bid_blue"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="أضف اعلانك في قسم الحراج"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/premiumSubscription"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/verify_blue_big"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/premium_subscription"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/mazadRules"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_bid_blue_big"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/mazad_rules"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/myOrders"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_icon_awesome_shopping_bag"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/my_orders"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/pocket"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_icon_awesome_wallet"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/my_pocket"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/deals"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_icon_awesome_shopping_bag"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/special_deals"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/wishList"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_like_blue"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/my_wishlist"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/myHaraj"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_user_blue"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="اعلاناتي"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/editProfile"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_user_blue"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/edit_profile"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/contactUs"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_call_blue"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/contact_us"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/commissionAccount"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_calculator"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/commissionAccount"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+
+            <TextView
+                android:id="@+id/discountSystem"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_discount"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/discountSystem"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/followedProducts"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_follow_big_blue"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="قائمه المتابعه"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/forbiddenProducts"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_forbidden_products"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/forbiddenProducts"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/serviceUseTreaty"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_file_blue"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/serviceUseTreaty"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/blackList"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_black_list_blue"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/black_list"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/aboutApp"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_info_black_24dp"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/about_app"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/other"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_forward_blue"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="16dp"
+                android:gravity="center_vertical|start"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="8dp"
+                android:text="@string/other"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+
+            <TextView
+                android:id="@+id/signOut"
+                style="@style/LayoutClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:drawableStart="@drawable/ic_sign_out_option"
+                android:drawableEnd="@drawable/ic_forward"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical|start"
+                android:padding="8dp"
+                android:text="@string/sign_out"
+                android:textAlignment="viewStart"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_normal_x" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grayTrans" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/progress_layout" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

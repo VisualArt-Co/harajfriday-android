@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0474c0</color>
+    <color name="colorPrimaryDark">#0474c0</color>
+    <color name="colorAccent">#0474c0</color>
+    <color name="colorPrimaryTrans">#7A1B74C0</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="green">#5BAA72</color>
+    <color name="greenDark">#285A36</color>
+    <color name="greenDarkTrans">#3C1FEF72</color>
+    <color name="darkBlue">#45668C</color>
+    <color name="uncheckColor">#8E8E93</color>
+    <color name="greenHolo">#43FF00</color>
+    <color name="greenHolo2">#1AE4C1</color>
+    <color name="greenHolo3">#56b404</color>
+    <color name="grayTrans">#69757575</color>
+    <color name="grayTrans2">#23757575</color>
+    <color name="textColorGrey">#777777</color>
+    <color name="greyBackDark">#F1F1F1</color>
+    <color name="greyBackDark_">#f6f6f6</color>
+    <color name="greyBackDarkx">#ADADAD</color>
+    <color name="greyBackDarkxx">#5E5E5E</color>
+    <color name="greyBack707070">#707070</color>
+    <color name="greyBack474747">#474747</color>
+    <color name="greyBackC8C7CC">#C8C7CC</color>
+    <color name="red">#FD3E3E</color>
+    <color name="redDark">#D81212</color>
+    <color name="redDarker">#7B1D1D</color>
+    <color name="redSmooth">#FFB2B2</color>
+    <color name="yellow">#FFB300</color>
+    <color name="milky">#F7F5E8</color>
+    <color name="blue_lighter">#F7FBFA</color>
+    <color name="gold">#FFBA00</color>
+    <color name="whatsappColor">#eafee2</color>
+</resources>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.benAbdelWahed.ui.address.AddressItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{viewModel.isSelected?@color/greenDarkTrans:@color/white}"
+        android:onClick="@{viewModel::onClick}">
+
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:layout_marginEnd="@dimen/_14dp"
+            android:text="@{viewModel.item.given_name}"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_normal"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="احمد محمد" />
+
+        <TextView
+            android:id="@+id/countryCity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4dp"
+            android:text='@{viewModel.item.city}'
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/name"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            tools:text="السعودية الرياض" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4dp"
+            android:text='@{viewModel.details}'
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/name"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/countryCity"
+            tools:text="بجوار المدرسة" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4dp"
+            android:text='@{viewModel.item.phone}'
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/name"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/address"
+            tools:text="0122222266" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:layout_marginEnd="@dimen/_24dp"
+            android:onClick="@{viewModel::onDelete}"
+            android:padding="@dimen/_4dp"
+            android:src="@drawable/ic_icon_material_delete_forever"
+            app:layout_constraintBottom_toTopOf="@id/edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:visibleOrGone="@{viewModel.isEditable}" />
+
+        <ImageView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:onClick="@{viewModel::onEdit}"
+            android:padding="@dimen/_4dp"
+            android:src="@drawable/edit_grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/delete"
+            app:layout_constraintStart_toStartOf="@id/delete"
+            app:layout_constraintTop_toBottomOf="@id/delete"
+            app:visibleOrGone="@{viewModel.isEditable}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
